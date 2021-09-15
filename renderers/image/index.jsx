@@ -24,7 +24,7 @@ const supportedKeys = ['img', 'figure', 'figcaption'];
 const ImageOutput = ({ data, style, classNames, config }) => {
   const url = data?.file?.url || data?.url;
 
-  if (!data || url) return '';
+  if (!data || !url) return '';
   if (!style || typeof style !== 'object') style = {};
   if (!config || typeof config !== 'object') config = {};
   if (!classNames || typeof classNames !== 'object') classNames = '';
