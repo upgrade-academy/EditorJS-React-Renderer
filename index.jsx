@@ -60,6 +60,9 @@ const Output = ({ data, style, classNames, config, renderers }) => {
 
   return data.blocks.map((block, i) => {
     const Renderer = renderers[block.type.toLowerCase()];
+
+    if (!render) return <p>{block.type.toLowerCase()} is not supported</p>
+
     return <Renderer key={i} data={block.data} style={style.codeBox || {}} config={config.codeBox || {}} classNames={classNames.codeBox || {}} />;
   });
 };
