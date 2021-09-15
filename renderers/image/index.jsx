@@ -22,7 +22,9 @@ import imageOutputStyle from './style';
 const supportedKeys = ['img', 'figure', 'figcaption'];
 
 const ImageOutput = ({ data, style, classNames, config }) => {
-  if (!data || !data.url || !data.file || !data.file.url) return '';
+  const url = data?.file?.url || data?.url;
+
+  if (!data || url) return '';
   if (!style || typeof style !== 'object') style = {};
   if (!config || typeof config !== 'object') config = {};
   if (!classNames || typeof classNames !== 'object') classNames = '';
@@ -44,7 +46,7 @@ const ImageOutput = ({ data, style, classNames, config }) => {
 
   return (
     <figure style={ figureStyle } className={ classNames.figure }>
-      <img src={ data.url || data.file.url } alt={ data.caption || '' } style={ imageStyle } className={ classNames.img } />
+      <img src={ url } alt={ data.caption || '' } style={ imageStyle } className={ classNames.img } />
       { data.caption && <figcaption style={ figcaptionStyle } className={ classNames.figcaption }>{ ReactHtmlParser(data.caption) }</figcaption> }
     </figure>
   );
