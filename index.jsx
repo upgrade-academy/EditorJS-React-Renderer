@@ -39,6 +39,7 @@ const defaultRenderers = {
   header: HeaderOutput,
   paragraph: ParagraphOutput,
   image: ImageOutput,
+  simpleimage: ImageOutput,
   video: VideoOutput,
   embed: EmbedOutput,
   table: TableOutput,
